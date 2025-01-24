@@ -3,6 +3,9 @@ from tools import yt_tool
 
 from dotenv import load_dotenv
 load_dotenv()
+import os
+os.environ["OPEN_API_KEY"]=os.getenv("OPENAPI_KEY")
+os.environ["OPENAI_MODEL_NAME"]="gpt-4-0125-preview"
 
 
 ##Create a senior blog content researcher
@@ -16,7 +19,7 @@ blog_researcher=Agent(
     backstory=(
         "Expert in understanding videos in AI Data Science, Machine learning and GEN AI and providing suggestion"
     ),
-llm=LLM(model="ollama/llama3.2", base_url="http://localhost:11434"),	
+llm=llm,	
     tools=[yt_tool],
     allow_delegation=True
 )
@@ -34,7 +37,7 @@ blog_writer=Agent(
         "engaging narratives that captivate and educate, bringing new"
         "discoveries to light in an accessible manner."
     ),
-llm=LLM(model="ollama/llama3.2", base_url="http://localhost:11434"),
+llm=llm,
     tools=[yt_tool],
     allow_delegation=False,
     
